@@ -1,0 +1,64 @@
+import { EntityActionTypes } from '../actions/action-types';
+export type IEffectExclusions = {
+    readonly [action in any | EntityActionTypes]: boolean;
+};
+export declare const EXTRA_EFFECTS_EXCLUSION: Readonly<{
+    "[Entity] (Generic) Select": true;
+    "[Entity] (Generic) Select Many": true;
+    "[Entity] (Generic) Select by Key": true;
+    "[Entity] (Generic) Select Many by Keys": true;
+    "[Entity] (Generic) Deselect": true;
+    "[Entity] (Generic) Deselect of Many": true;
+    "[Entity] (Generic) Deselect of Many by Keys": true;
+    "[Entity] (Generic) Deselect of All": true;
+    "[Entity] (Generic) Clear": true;
+}>;
+export declare const CURD_EFFECTS_EXCLUSION: Readonly<{
+    "[Entity] (Generic) Create": true;
+    "[Entity] (Generic) Create Many": true;
+    "[Entity] (Generic) Update": true;
+    "[Entity] (Generic) Update Many": true;
+    "[Entity] (Generic) Upsert": true;
+    "[Entity] (Generic) Upsert Many": true;
+    "[Entity] (Generic) Replace": true;
+    "[Entity] (Generic) Replace Many": true;
+    "[Entity] (Generic) Delete": true;
+    "[Entity] (Generic) Delete Many": true;
+    "[Entity] (Generic) Delete by key": true;
+    "[Entity] (Generic) Delete many by keys": true;
+}>;
+export declare const LOAD_EFFECTS_EXCLUSION: Readonly<{
+    "[Entity] (Generic) Load": true;
+    "[Entity] (Generic) Load All": true;
+    "[Entity] (Generic) Load Many": true;
+    "[Entity] (Generic) Load Page": true;
+    "[Entity] (Generic) Load Range": true;
+}>;
+export declare const ALL_EFFECTS_EXCLUSION: Readonly<{
+    "[Entity] (Generic) Select": true;
+    "[Entity] (Generic) Select Many": true;
+    "[Entity] (Generic) Select by Key": true;
+    "[Entity] (Generic) Select Many by Keys": true;
+    "[Entity] (Generic) Deselect": true;
+    "[Entity] (Generic) Deselect of Many": true;
+    "[Entity] (Generic) Deselect of Many by Keys": true;
+    "[Entity] (Generic) Deselect of All": true;
+    "[Entity] (Generic) Clear": true;
+    "[Entity] (Generic) Create": true;
+    "[Entity] (Generic) Create Many": true;
+    "[Entity] (Generic) Update": true;
+    "[Entity] (Generic) Update Many": true;
+    "[Entity] (Generic) Upsert": true;
+    "[Entity] (Generic) Upsert Many": true;
+    "[Entity] (Generic) Replace": true;
+    "[Entity] (Generic) Replace Many": true;
+    "[Entity] (Generic) Delete": true;
+    "[Entity] (Generic) Delete Many": true;
+    "[Entity] (Generic) Delete by key": true;
+    "[Entity] (Generic) Delete many by keys": true;
+    "[Entity] (Generic) Load": true;
+    "[Entity] (Generic) Load All": true;
+    "[Entity] (Generic) Load Many": true;
+    "[Entity] (Generic) Load Page": true;
+    "[Entity] (Generic) Load Range": true;
+}>;

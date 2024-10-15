@@ -1,0 +1,1 @@
+{"version":3,"file":"factories.d.ts","sourceRoot":"","sources":["../../../../projects/ngrx-auto-entity/src/lib/factories/factories.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,aAAa,CAAC;AAE5C,OAAO,EAAE,KAAK,EAAE,MAAM,oBAAoB,CAAC;AAC3C,OAAO,EAAE,IAAI,EAAE,MAAM,8BAA8B,CAAC;AAEpD,OAAO,EAAe,eAAe,EAA8B,MAAM,QAAQ,CAAC;AAElF,eAAO,MAAM,iBAAiB,wGAEF,eAAe,mBAMxC,CAAC"}

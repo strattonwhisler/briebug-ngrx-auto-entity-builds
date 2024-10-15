@@ -1,0 +1,30 @@
+import { InjectionToken, Injector } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { IEntityInfo } from '../actions/entity-info';
+import { Page, Range } from '../models';
+import { EntityIdentity } from '../types/entity-identity';
+import { IEntityState } from '../util/entity-state';
+export declare const NGRX_AUTO_ENTITY_APP_STORE: InjectionToken<unknown>;
+export declare const getEntityState: (info: IEntityInfo) => (state: any) => IEntityState<any>;
+export declare const getLoadedAt: (state: IEntityState<any>) => number | undefined;
+export declare const getIsLoading: (state: IEntityState<any>) => boolean;
+export declare const getCurrentPage: (state: IEntityState<any>) => Page | undefined;
+export declare const getCurrentRange: (state: IEntityState<any>) => Range | undefined;
+export declare const getEntityIds: (state: IEntityState<any>) => EntityIdentity[];
+export declare const mapToHasEntities: (ids?: EntityIdentity[]) => boolean;
+export declare const entityLoadedAt: (info: IEntityInfo) => (data: any) => any;
+export declare const entityIsLoading: (info: IEntityInfo) => (data: any) => any;
+export declare const entityCurrentPage: (info: IEntityInfo) => (data: any) => any;
+export declare const entityCurrentRange: (info: IEntityInfo) => (data: any) => any;
+export declare const entityIds: (info: IEntityInfo) => (data: any) => any;
+export declare const hasEntitiesLoaded: (info: IEntityInfo) => (data: any) => any;
+export declare const addSeconds: (date: Date, seconds: number) => Date;
+export declare const nowAfterExpiry: (expiry: Date) => boolean;
+export declare const isSubsequentRange: (a: any, b: any) => boolean;
+export declare const warnIfMissingStore: (() => void) & {
+    lastWarnTime?: number;
+};
+export declare const getAppStore: <TAction>(injector: Injector) => import("rxjs").UnaryFunction<import("rxjs").Observable<TAction>, import("rxjs").Observable<{
+    action: TAction;
+    store: Store<any>;
+}>>;

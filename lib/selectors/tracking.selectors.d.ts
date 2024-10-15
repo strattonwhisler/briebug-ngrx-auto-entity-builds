@@ -1,0 +1,12 @@
+import { IEntityTracking } from '../util/entity-state';
+export declare const mapToHasBeenLoaded: (tracking: IEntityTracking) => boolean;
+export declare const mapToLoadWasAttempted: (tracking: IEntityTracking) => boolean;
+export declare const mapToIsLoading: (tracking: IEntityTracking) => boolean;
+export declare const mapToIsSaving: (tracking: IEntityTracking) => boolean;
+export declare const mapToIsDeleting: (tracking: IEntityTracking) => boolean;
+export declare const mapToLoadedAt: (tracking: IEntityTracking) => Date | undefined;
+export declare const mapToSavedAt: (tracking: IEntityTracking) => Date | undefined;
+export declare const mapToCreatedAt: (tracking: IEntityTracking) => Date | undefined;
+export declare const mapToUpdatedAt: (tracking: IEntityTracking) => Date | undefined;
+export declare const mapToReplacedAt: (tracking: IEntityTracking) => Date | undefined;
+export declare const mapToDeletedAt: (tracking: IEntityTracking) => Date | undefined;

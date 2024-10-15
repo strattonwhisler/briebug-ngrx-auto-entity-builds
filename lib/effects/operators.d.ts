@@ -1,0 +1,60 @@
+import { Observable } from 'rxjs';
+import { Create, CreateFailure, CreateMany, CreateManyFailure, CreateManySuccess, CreateSuccess } from '../actions/create-actions';
+import { Delete, DeleteFailure, DeleteMany, DeleteManyFailure, DeleteManySuccess, DeleteSuccess } from '../actions/delete-actions';
+import { DeleteByKey, DeleteByKeyFailure, DeleteByKeySuccess, DeleteManyByKeys, DeleteManyByKeysFailure, DeleteManyByKeysSuccess } from '../actions/delete-by-key-actions';
+import { Deselect, DeselectAll, Deselected, DeselectedMany, DeselectMany, DeselectManyByKeys } from '../actions/deselection-actions';
+import { Change, Changed, Edit, EditByKey, Edited, EditedByKey, EditEnded, EditNew, EndEdit } from '../actions/edit-actions';
+import { Load, LoadFailure, LoadSuccess } from '../actions/load-actions';
+import { LoadAll, LoadAllFailure, LoadAllSuccess } from '../actions/load-all-actions';
+import { LoadMany, LoadManyFailure, LoadManySuccess } from '../actions/load-many-actions';
+import { LoadPage, LoadPageFailure, LoadPageSuccess } from '../actions/load-page-actions';
+import { LoadRange, LoadRangeFailure, LoadRangeSuccess } from '../actions/load-range-actions';
+import { Replace, ReplaceFailure, ReplaceMany, ReplaceManyFailure, ReplaceManySuccess, ReplaceSuccess } from '../actions/replace-actions';
+import { Select, SelectByKey, Selected, SelectedMany, SelectedMore, SelectMany, SelectManyByKeys, SelectMore, SelectMoreByKeys } from '../actions/selection-actions';
+import { Update, UpdateFailure, UpdateMany, UpdateManyFailure, UpdateManySuccess, UpdateSuccess } from '../actions/update-actions';
+import { Upsert, UpsertFailure, UpsertMany, UpsertManyFailure, UpsertManySuccess, UpsertSuccess } from '../actions/upsert-actions';
+import { NgrxAutoEntityService } from '../service/service';
+import { IEntityError } from '../service/wrapper-models';
+import * as i0 from "@angular/core";
+export declare const handleError: <TModel, TErrorAction>(error: IEntityError, errorAction: TErrorAction, methodName: string) => Observable<TErrorAction>;
+/**
+ * Rxjs operators that are intended to be called by client-defined Effects class
+ */
+export declare class EntityOperators {
+    private entityService;
+    constructor(entityService: NgrxAutoEntityService);
+    load<TModel>(): (source: Observable<Load<TModel>>) => Observable<LoadSuccess<TModel> | LoadFailure<TModel>>;
+    loadMany<TModel>(): (source: Observable<LoadMany<TModel>>) => Observable<LoadManySuccess<TModel> | LoadManyFailure<TModel>>;
+    loadAll<TModel>(): (source: Observable<LoadAll<TModel>>) => Observable<LoadAllSuccess<TModel> | LoadAllFailure<TModel>>;
+    loadPage<TModel>(): (source: Observable<LoadPage<TModel>>) => Observable<LoadPageSuccess<TModel> | LoadPageFailure<TModel>>;
+    loadRange<TModel>(): (source: Observable<LoadRange<TModel>>) => Observable<LoadRangeSuccess<TModel> | LoadRangeFailure<TModel>>;
+    create<TModel>(): (source: Observable<Create<TModel>>) => Observable<CreateSuccess<TModel> | CreateFailure<TModel>>;
+    createMany<TModel>(): (source: Observable<CreateMany<TModel>>) => Observable<CreateManySuccess<TModel> | CreateManyFailure<TModel>>;
+    update<TModel>(): (source: Observable<Update<TModel>>) => Observable<UpdateSuccess<TModel> | UpdateFailure<TModel>>;
+    updateMany<TModel>(): (source: Observable<UpdateMany<TModel>>) => Observable<UpdateManySuccess<TModel> | UpdateManyFailure<TModel>>;
+    upsert<TModel>(): (source: Observable<Upsert<TModel>>) => Observable<UpsertSuccess<TModel> | UpsertFailure<TModel>>;
+    upsertMany<TModel>(): (source: Observable<UpsertMany<TModel>>) => Observable<UpsertManySuccess<TModel> | UpsertManyFailure<TModel>>;
+    replace<TModel>(): (source: Observable<Replace<TModel>>) => Observable<ReplaceSuccess<TModel> | ReplaceFailure<TModel>>;
+    replaceMany<TModel>(): (source: Observable<ReplaceMany<TModel>>) => Observable<ReplaceManySuccess<TModel> | ReplaceManyFailure<TModel>>;
+    delete<TModel>(): (source: Observable<Delete<TModel>>) => Observable<DeleteSuccess<TModel> | DeleteFailure<TModel>>;
+    deleteMany<TModel>(): (source: Observable<DeleteMany<TModel>>) => Observable<DeleteManySuccess<TModel> | DeleteManyFailure<TModel>>;
+    deleteByKey<TModel>(): (source: Observable<DeleteByKey<TModel>>) => Observable<DeleteByKeySuccess<TModel> | DeleteByKeyFailure<TModel>>;
+    deleteManyByKey<TModel>(): (source: Observable<DeleteManyByKeys<TModel>>) => Observable<DeleteManyByKeysSuccess<TModel> | DeleteManyByKeysFailure<TModel>>;
+    select<TModel>(): (source: Observable<Select<TModel>>) => Observable<Selected<TModel>>;
+    selectByKey<TModel>(): (source: Observable<SelectByKey<TModel>>) => Observable<Selected<TModel>>;
+    selectMany<TModel>(): (source: Observable<SelectMany<TModel>>) => Observable<SelectedMany<TModel>>;
+    selectMore<TModel>(): (source: Observable<SelectMore<TModel>>) => Observable<SelectedMore<TModel>>;
+    selectManyByKeys<TModel>(): (source: Observable<SelectManyByKeys<TModel>>) => Observable<SelectedMany<TModel>>;
+    selectMoreByKeys<TModel>(): (source: Observable<SelectMoreByKeys<TModel>>) => Observable<SelectedMore<TModel>>;
+    deselect<TModel>(): (source: Observable<Deselect<TModel>>) => Observable<Deselected<TModel>>;
+    deselectMany<TModel>(): (source: Observable<DeselectMany<TModel>>) => Observable<DeselectedMany<TModel>>;
+    deselectManyByKeys<TModel>(): (source: Observable<DeselectManyByKeys<TModel>>) => Observable<DeselectedMany<TModel>>;
+    deselectAll<TModel>(): (source: Observable<DeselectAll<TModel>>) => Observable<DeselectedMany<TModel>>;
+    editNew<TModel>(): (source: Observable<EditNew<TModel>>) => Observable<Edited<TModel>>;
+    edit<TModel>(): (source: Observable<Edit<TModel>>) => Observable<Edited<TModel>>;
+    editByKey<TModel>(): (source: Observable<EditByKey<TModel>>) => Observable<EditedByKey<TModel>>;
+    change<TModel>(): (source: Observable<Change<TModel>>) => Observable<Changed<TModel>>;
+    endEdit<TModel>(): (source: Observable<EndEdit<TModel>>) => Observable<EditEnded<TModel>>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<EntityOperators, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<EntityOperators>;
+}

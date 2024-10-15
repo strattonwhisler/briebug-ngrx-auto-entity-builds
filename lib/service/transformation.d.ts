@@ -1,0 +1,14 @@
+import { IEntityInfo } from '../actions/entity-info';
+import { IEntityTransformer } from '../decorators/entity-options';
+type TransformFn = (value: any, criteria?: any) => any;
+export declare const getTransforms: (transform: IEntityTransformer[], prop: string) => TransformFn[];
+export declare const applyTransforms: (transforms: TransformFn[], criteria?: any) => (originalEntity: any) => any;
+export declare const transformSingleFromServer: <TModel>(entityInfo: IEntityInfo, criteria?: any) => (entity: any) => TModel;
+export declare const transformArrayFromServer: <TModel>(entityInfo: IEntityInfo, criteria?: any) => (entities: TModel[]) => TModel[];
+export declare const transformSingleToServer: <TModel>(entityInfo: IEntityInfo, criteria?: any) => (originalEntity: TModel) => any;
+export declare const transformArrayToServer: <TModel>(entityInfo: IEntityInfo, criteria?: any) => (entities: TModel[]) => any[];
+export declare const transformEntityFromServer: <TModel>(entityInfo: IEntityInfo, entity: any, criteria?: any) => TModel;
+export declare const transformEntitiesFromServer: <TModel>(entityInfo: IEntityInfo, entities: any[], criteria?: any) => TModel[];
+export declare const transformEntityToServer: <TModel>(entityInfo: IEntityInfo, entity: TModel, criteria?: any) => any;
+export declare const transformEntitiesToServer: <TModel>(entityInfo: IEntityInfo, entities: any[], criteria?: any) => TModel[];
+export {};

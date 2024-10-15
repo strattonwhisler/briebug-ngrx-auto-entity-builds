@@ -1,0 +1,1 @@
+{"version":3,"file":"entity-info.d.ts","sourceRoot":"","sources":["../../../../projects/ngrx-auto-entity/src/lib/actions/entity-info.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,8BAA8B,CAAC;AAE9D;;GAEG;AACH,MAAM,WAAW,WAAY,SAAQ,cAAc;IACjD,SAAS,EAAE,UAAU,GAAG,CAAC;CAC1B"}

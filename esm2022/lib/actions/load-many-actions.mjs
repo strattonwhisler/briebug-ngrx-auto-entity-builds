@@ -1,0 +1,73 @@
+import { EntityActionTypes } from './action-types';
+import { EntityAction } from './entity-action';
+/**
+ * Loads all instances of an entity if necessary
+ * HTTP GET /entity
+ *
+ * @remarks:
+ * This action will only load the entity if there is no previous loadedAt date or any entities in state
+ * This is an alternative initiation action that will ultimately result in Load being dispatched
+ *
+ * @param type - The entity model decorated with @Entity
+ * @param maxAge - (optional) The max age of the entity, after which load will be performed regardless
+ * @param criteria - (optional) The custom criteria for this action
+ * @param correlationId - (optional) A custom correlation id for this action; Use to correlate subsequent result actions
+ */
+export class LoadManyIfNecessary extends EntityAction {
+    constructor(type, maxAge, criteria, correlationId) {
+        super(type, EntityActionTypes.LoadManyIfNecessary, correlationId);
+        this.maxAge = maxAge;
+        this.criteria = criteria;
+    }
+}
+/**
+ * Loads many instances of an entity
+ * HTTP GET /entity
+ *
+ * @remarks:
+ * Replaces many entities for this model in state. Loaded entities will be merged into state, updating
+ * existing entities (by key) or adding new entities (key not found in state).
+ *
+ * @param type - The entity model decorated with @Entity
+ * @param criteria - (optional) The custom criteria for this action
+ * @param correlationId - (optional) A custom correlation id for this action; Use to correlate subsequent result actions
+ */
+export class LoadMany extends EntityAction {
+    constructor(type, criteria, correlationId) {
+        super(type, EntityActionTypes.LoadMany, correlationId);
+        this.criteria = criteria;
+    }
+}
+/**
+ * Handles a successful response for loading many entities
+ * HTTP GET /entity
+ *
+ * @param type - The entity model decorated with @Entity
+ * @param entities - The entities that were loaded
+ * @param criteria - (optional) The custom criteria from the initial load many action
+ * @param correlationId - (optional) The correlationId for this action; correlates to initial load many action
+ */
+export class LoadManySuccess extends EntityAction {
+    constructor(type, entities, criteria, correlationId) {
+        super(type, EntityActionTypes.LoadManySuccess, correlationId);
+        this.entities = entities;
+        this.criteria = criteria;
+    }
+}
+/**
+ * Handles an error response when loading many entities
+ * HTTP GET /entity
+ *
+ * @param type - The entity model decorated with @Entity
+ * @param error - (optional) The error object that was thrown
+ * @param criteria - (optional) The custom criteria from the initial load many action
+ * @param correlationId - (optional) The correlationId for this action; correlates to initial load many action
+ */
+export class LoadManyFailure extends EntityAction {
+    constructor(type, error, criteria, correlationId) {
+        super(type, EntityActionTypes.LoadManyFailure, correlationId);
+        this.error = error;
+        this.criteria = criteria;
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibG9hZC1tYW55LWFjdGlvbnMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9wcm9qZWN0cy9uZ3J4LWF1dG8tZW50aXR5L3NyYy9saWIvYWN0aW9ucy9sb2FkLW1hbnktYWN0aW9ucy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQUUsaUJBQWlCLEVBQUUsTUFBTSxnQkFBZ0IsQ0FBQztBQUNuRCxPQUFPLEVBQUUsWUFBWSxFQUFFLE1BQU0saUJBQWlCLENBQUM7QUFFL0M7Ozs7Ozs7Ozs7OztHQVlHO0FBQ0gsTUFBTSxPQUFPLG1CQUE0QixTQUFRLFlBQW9CO0lBQ25FLFlBQVksSUFBc0IsRUFBUyxNQUFlLEVBQVMsUUFBYyxFQUFFLGFBQXNCO1FBQ3ZHLEtBQUssQ0FBQyxJQUFJLEVBQUUsaUJBQWlCLENBQUMsbUJBQW1CLEVBQUUsYUFBYSxDQUFDLENBQUM7UUFEekIsV0FBTSxHQUFOLE1BQU0sQ0FBUztRQUFTLGFBQVEsR0FBUixRQUFRLENBQU07SUFFakYsQ0FBQztDQUNGO0FBRUQ7Ozs7Ozs7Ozs7O0dBV0c7QUFDSCxNQUFNLE9BQU8sUUFBaUIsU0FBUSxZQUFvQjtJQUN4RCxZQUFZLElBQXNCLEVBQVMsUUFBYyxFQUFFLGFBQXNCO1FBQy9FLEtBQUssQ0FBQyxJQUFJLEVBQUUsaUJBQWlCLENBQUMsUUFBUSxFQUFFLGFBQWEsQ0FBQyxDQUFDO1FBRGQsYUFBUSxHQUFSLFFBQVEsQ0FBTTtJQUV6RCxDQUFDO0NBQ0Y7QUFFRDs7Ozs7Ozs7R0FRRztBQUNILE1BQU0sT0FBTyxlQUF3QixTQUFRLFlBQW9CO0lBQy9ELFlBQVksSUFBc0IsRUFBUyxRQUFrQixFQUFTLFFBQWMsRUFBRSxhQUFzQjtRQUMxRyxLQUFLLENBQUMsSUFBSSxFQUFFLGlCQUFpQixDQUFDLGVBQWUsRUFBRSxhQUFhLENBQUMsQ0FBQztRQURyQixhQUFRLEdBQVIsUUFBUSxDQUFVO1FBQVMsYUFBUSxHQUFSLFFBQVEsQ0FBTTtJQUVwRixDQUFDO0NBQ0Y7QUFFRDs7Ozs7Ozs7R0FRRztBQUNILE1BQU0sT0FBTyxlQUF3QixTQUFRLFlBQW9CO0lBQy9ELFlBQVksSUFBc0IsRUFBUyxLQUFVLEVBQVMsUUFBYyxFQUFFLGFBQXNCO1FBQ2xHLEtBQUssQ0FBQyxJQUFJLEVBQUUsaUJBQWlCLENBQUMsZUFBZSxFQUFFLGFBQWEsQ0FBQyxDQUFDO1FBRHJCLFVBQUssR0FBTCxLQUFLLENBQUs7UUFBUyxhQUFRLEdBQVIsUUFBUSxDQUFNO0lBRTVFLENBQUM7Q0FDRiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEVudGl0eUFjdGlvblR5cGVzIH0gZnJvbSAnLi9hY3Rpb24tdHlwZXMnO1xuaW1wb3J0IHsgRW50aXR5QWN0aW9uIH0gZnJvbSAnLi9lbnRpdHktYWN0aW9uJztcblxuLyoqXG4gKiBMb2FkcyBhbGwgaW5zdGFuY2VzIG9mIGFuIGVudGl0eSBpZiBuZWNlc3NhcnlcbiAqIEhUVFAgR0VUIC9lbnRpdHlcbiAqXG4gKiBAcmVtYXJrczpcbiAqIFRoaXMgYWN0aW9uIHdpbGwgb25seSBsb2FkIHRoZSBlbnRpdHkgaWYgdGhlcmUgaXMgbm8gcHJldmlvdXMgbG9hZGVkQXQgZGF0ZSBvciBhbnkgZW50aXRpZXMgaW4gc3RhdGVcbiAqIFRoaXMgaXMgYW4gYWx0ZXJuYXRpdmUgaW5pdGlhdGlvbiBhY3Rpb24gdGhhdCB3aWxsIHVsdGltYXRlbHkgcmVzdWx0IGluIExvYWQgYmVpbmcgZGlzcGF0Y2hlZFxuICpcbiAqIEBwYXJhbSB0eXBlIC0gVGhlIGVudGl0eSBtb2RlbCBkZWNvcmF0ZWQgd2l0aCBARW50aXR5XG4gKiBAcGFyYW0gbWF4QWdlIC0gKG9wdGlvbmFsKSBUaGUgbWF4IGFnZSBvZiB0aGUgZW50aXR5LCBhZnRlciB3aGljaCBsb2FkIHdpbGwgYmUgcGVyZm9ybWVkIHJlZ2FyZGxlc3NcbiAqIEBwYXJhbSBjcml0ZXJpYSAtIChvcHRpb25hbCkgVGhlIGN1c3RvbSBjcml0ZXJpYSBmb3IgdGhpcyBhY3Rpb25cbiAqIEBwYXJhbSBjb3JyZWxhdGlvbklkIC0gKG9wdGlvbmFsKSBBIGN1c3RvbSBjb3JyZWxhdGlvbiBpZCBmb3IgdGhpcyBhY3Rpb247IFVzZSB0byBjb3JyZWxhdGUgc3Vic2VxdWVudCByZXN1bHQgYWN0aW9uc1xuICovXG5leHBvcnQgY2xhc3MgTG9hZE1hbnlJZk5lY2Vzc2FyeTxUTW9kZWw+IGV4dGVuZHMgRW50aXR5QWN0aW9uPFRNb2RlbD4ge1xuICBjb25zdHJ1Y3Rvcih0eXBlOiBuZXcgKCkgPT4gVE1vZGVsLCBwdWJsaWMgbWF4QWdlPzogbnVtYmVyLCBwdWJsaWMgY3JpdGVyaWE/OiBhbnksIGNvcnJlbGF0aW9uSWQ/OiBzdHJpbmcpIHtcbiAgICBzdXBlcih0eXBlLCBFbnRpdHlBY3Rpb25UeXBlcy5Mb2FkTWFueUlmTmVjZXNzYXJ5LCBjb3JyZWxhdGlvbklkKTtcbiAgfVxufVxuXG4vKipcbiAqIExvYWRzIG1hbnkgaW5zdGFuY2VzIG9mIGFuIGVudGl0eVxuICogSFRUUCBHRVQgL2VudGl0eVxuICpcbiAqIEByZW1hcmtzOlxuICogUmVwbGFjZXMgbWFueSBlbnRpdGllcyBmb3IgdGhpcyBtb2RlbCBpbiBzdGF0ZS4gTG9hZGVkIGVudGl0aWVzIHdpbGwgYmUgbWVyZ2VkIGludG8gc3RhdGUsIHVwZGF0aW5nXG4gKiBleGlzdGluZyBlbnRpdGllcyAoYnkga2V5KSBvciBhZGRpbmcgbmV3IGVudGl0aWVzIChrZXkgbm90IGZvdW5kIGluIHN0YXRlKS5cbiAqXG4gKiBAcGFyYW0gdHlwZSAtIFRoZSBlbnRpdHkgbW9kZWwgZGVjb3JhdGVkIHdpdGggQEVudGl0eVxuICogQHBhcmFtIGNyaXRlcmlhIC0gKG9wdGlvbmFsKSBUaGUgY3VzdG9tIGNyaXRlcmlhIGZvciB0aGlzIGFjdGlvblxuICogQHBhcmFtIGNvcnJlbGF0aW9uSWQgLSAob3B0aW9uYWwpIEEgY3VzdG9tIGNvcnJlbGF0aW9uIGlkIGZvciB0aGlzIGFjdGlvbjsgVXNlIHRvIGNvcnJlbGF0ZSBzdWJzZXF1ZW50IHJlc3VsdCBhY3Rpb25zXG4gKi9cbmV4cG9ydCBjbGFzcyBMb2FkTWFueTxUTW9kZWw+IGV4dGVuZHMgRW50aXR5QWN0aW9uPFRNb2RlbD4ge1xuICBjb25zdHJ1Y3Rvcih0eXBlOiBuZXcgKCkgPT4gVE1vZGVsLCBwdWJsaWMgY3JpdGVyaWE/OiBhbnksIGNvcnJlbGF0aW9uSWQ/OiBzdHJpbmcpIHtcbiAgICBzdXBlcih0eXBlLCBFbnRpdHlBY3Rpb25UeXBlcy5Mb2FkTWFueSwgY29ycmVsYXRpb25JZCk7XG4gIH1cbn1cblxuLyoqXG4gKiBIYW5kbGVzIGEgc3VjY2Vzc2Z1bCByZXNwb25zZSBmb3IgbG9hZGluZyBtYW55IGVudGl0aWVzXG4gKiBIVFRQIEdFVCAvZW50aXR5XG4gKlxuICogQHBhcmFtIHR5cGUgLSBUaGUgZW50aXR5IG1vZGVsIGRlY29yYXRlZCB3aXRoIEBFbnRpdHlcbiAqIEBwYXJhbSBlbnRpdGllcyAtIFRoZSBlbnRpdGllcyB0aGF0IHdlcmUgbG9hZGVkXG4gKiBAcGFyYW0gY3JpdGVyaWEgLSAob3B0aW9uYWwpIFRoZSBjdXN0b20gY3JpdGVyaWEgZnJvbSB0aGUgaW5pdGlhbCBsb2FkIG1hbnkgYWN0aW9uXG4gKiBAcGFyYW0gY29ycmVsYXRpb25JZCAtIChvcHRpb25hbCkgVGhlIGNvcnJlbGF0aW9uSWQgZm9yIHRoaXMgYWN0aW9uOyBjb3JyZWxhdGVzIHRvIGluaXRpYWwgbG9hZCBtYW55IGFjdGlvblxuICovXG5leHBvcnQgY2xhc3MgTG9hZE1hbnlTdWNjZXNzPFRNb2RlbD4gZXh0ZW5kcyBFbnRpdHlBY3Rpb248VE1vZGVsPiB7XG4gIGNvbnN0cnVjdG9yKHR5cGU6IG5ldyAoKSA9PiBUTW9kZWwsIHB1YmxpYyBlbnRpdGllczogVE1vZGVsW10sIHB1YmxpYyBjcml0ZXJpYT86IGFueSwgY29ycmVsYXRpb25JZD86IHN0cmluZykge1xuICAgIHN1cGVyKHR5cGUsIEVudGl0eUFjdGlvblR5cGVzLkxvYWRNYW55U3VjY2VzcywgY29ycmVsYXRpb25JZCk7XG4gIH1cbn1cblxuLyoqXG4gKiBIYW5kbGVzIGFuIGVycm9yIHJlc3BvbnNlIHdoZW4gbG9hZGluZyBtYW55IGVudGl0aWVzXG4gKiBIVFRQIEdFVCAvZW50aXR5XG4gKlxuICogQHBhcmFtIHR5cGUgLSBUaGUgZW50aXR5IG1vZGVsIGRlY29yYXRlZCB3aXRoIEBFbnRpdHlcbiAqIEBwYXJhbSBlcnJvciAtIChvcHRpb25hbCkgVGhlIGVycm9yIG9iamVjdCB0aGF0IHdhcyB0aHJvd25cbiAqIEBwYXJhbSBjcml0ZXJpYSAtIChvcHRpb25hbCkgVGhlIGN1c3RvbSBjcml0ZXJpYSBmcm9tIHRoZSBpbml0aWFsIGxvYWQgbWFueSBhY3Rpb25cbiAqIEBwYXJhbSBjb3JyZWxhdGlvbklkIC0gKG9wdGlvbmFsKSBUaGUgY29ycmVsYXRpb25JZCBmb3IgdGhpcyBhY3Rpb247IGNvcnJlbGF0ZXMgdG8gaW5pdGlhbCBsb2FkIG1hbnkgYWN0aW9uXG4gKi9cbmV4cG9ydCBjbGFzcyBMb2FkTWFueUZhaWx1cmU8VE1vZGVsPiBleHRlbmRzIEVudGl0eUFjdGlvbjxUTW9kZWw+IHtcbiAgY29uc3RydWN0b3IodHlwZTogbmV3ICgpID0+IFRNb2RlbCwgcHVibGljIGVycm9yOiBhbnksIHB1YmxpYyBjcml0ZXJpYT86IGFueSwgY29ycmVsYXRpb25JZD86IHN0cmluZykge1xuICAgIHN1cGVyKHR5cGUsIEVudGl0eUFjdGlvblR5cGVzLkxvYWRNYW55RmFpbHVyZSwgY29ycmVsYXRpb25JZCk7XG4gIH1cbn1cbiJdfQ==

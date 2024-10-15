@@ -1,0 +1,11 @@
+export declare const compose: (...fns: any[]) => (data: any) => any;
+export declare const tpipe: <TInput>(fn1: (value: TInput) => any, ...fns: Array<(value: any) => any>) => (data: any) => any;
+export declare const map: (fn: (x) => any) => (data: any) => any;
+export declare const tap: (fn: (x) => void) => (data: any) => any;
+export declare const noop: () => any;
+export declare const not: (fn: (...args: any[]) => any) => (value: any) => any;
+export declare const isUndefined: (value: any) => boolean;
+export declare const throwError: (message: string) => () => never;
+export declare const iif: (predicate: (value: any) => boolean, whenTrue: (value: any) => any, whenFalse: (value: any) => any) => (value: any) => any;
+export declare const asString: (value: any) => string;
+export declare const replace: (exp: string | RegExp, repl: any) => (data: any) => any;
